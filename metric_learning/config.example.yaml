@@ -1,0 +1,82 @@
+device: "cuda:0"
+
+comment: ""
+
+trainer:
+  type: "DiscreteMetricDiffusion"
+
+  dataset:
+    type: "DiffusionMetricEdgeConsistentMesh"
+
+    path: "${METRIC_DATA_ROOT}/model/metric_3"
+
+infer:
+  type: "DiscreteMetricDiffusion"
+
+  # predict dataset, label is optional
+  dataset:
+    type: "DiffusionMetricEdgeConsistentMesh"
+    path: "${METRIC_DATA_ROOT}/model/metric_3/predict"
+    percentage: 1.0
+
+  # model with epoch number to be loaded, hash is auto generated from this config file
+  model:
+    path: "${METRIC_DATA_ROOT}/model/metric_3/saved_models"
+    epoch: 100
+
+  visualizer:
+    type: "FrameField"
+    property: "npz"
+
+dataloader:
+  type: "DiffusionNet"
+
+logger:
+  type: "Regression"
+  # path to save the tensorboard log
+  path: "${METRIC_DATA_ROOT}/model/metric_3/runs"
+
+model:
+  type: "DiscreteEdgeMetricDiffusionNet"
+
+  edge_type: "edge" # "halfedge", "edge"
+
+  edge_scale: 1.0e+6
+
+  # model class type
+  feature_types: ["field"]
+
+  diffusion_net:
+    N_block: 8
+    C_width: 128
+    outputs_at: "vertices"
+
+criterion:
+  types: ["DiscreteMetricAbs"]
+  weights: [1.0]
+
+epoch:
+  n_epoch: 100
+
+  # save model every ${save_every_epoch} epochs
+  save_every_epoch: 10
+
+  evaluate_every_epoch: 10
+
+optimizer:
+  # Adam, SGD
+  type: "Adam"
+
+  # learning rate
+  lr: 1.e-4
+
+  momentum: 0.9
+  weight_decay: 0.0001
+
+scheduler:
+  type: "StepLR" # Exponential
+
+  # decay learning rate every ${decay_every} epochs by ${decay_rate}
+  step_size: 20
+
+  gamma: 0.5

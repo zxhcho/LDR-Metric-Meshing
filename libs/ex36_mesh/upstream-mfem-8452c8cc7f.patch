@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -838,6 +838,7 @@ endif()
+ set(MFEM_EXEC_PREREQUISITES_TARGET_NAME exec_prerequisites)
+ add_custom_target(${MFEM_EXEC_PREREQUISITES_TARGET_NAME})
+ 
++set(MFEM_ENABLE_EXAMPLES ON)
+ # Create a target for all examples and, optionally, enable it.
+ set(MFEM_ALL_EXAMPLES_TARGET_NAME examples)
+ add_mfem_target(${MFEM_ALL_EXAMPLES_TARGET_NAME} ${MFEM_ENABLE_EXAMPLES})
+diff --git a/examples/CMakeLists.txt b/examples/CMakeLists.txt
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -9,6 +9,8 @@
+ # terms of the BSD-3 license. We welcome feedback and contributions, see file
+ # CONTRIBUTING.md for details.
+ 
++add_subdirectory(ex36_mesh)
++
+ list(APPEND ALL_EXE_SRCS
+   ex0.cpp
+   ex1.cpp

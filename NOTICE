@@ -1,0 +1,63 @@
+This file records third-party terms for the obstacle release.
+The MIT license in LICENSE applies to author-written files in this repository.
+LICENSE does not relicense MFEM or MMG, and it does not state that those
+files are solely authored by the paper authors.
+
+MFEM
+----
+Upstream: https://github.com/mfem/mfem
+License: BSD 3-Clause License
+Copyright (c) 2010-2025, Lawrence Livermore National Security, LLC
+
+libs/ex36_mesh is derived from MFEM example 36 (examples/ex36.cpp).
+The comparison base is upstream commit 8452c8cc7f (git describe: v4.9-5-g8452c8cc7f).
+At that commit, the MFEM library sources are unchanged: the diff does not touch
+fem/, linalg/, mesh/, or the other library directories.
+
+The build-relevant local difference is:
+
+1. Root CMakeLists.txt gains `set(MFEM_ENABLE_EXAMPLES ON)` before the examples target.
+2. examples/CMakeLists.txt gains `add_subdirectory(ex36_mesh)`.
+3. The new directory examples/ex36_mesh. Those sources are the files in libs/ex36_mesh,
+   excluding this NOTICE text and the patch file below.
+
+libs/ex36_mesh/upstream-mfem-8452c8cc7f.patch contains items 1 and 2.
+Apply it from a clean MFEM tree at 8452c8cc7f, and copy libs/ex36_mesh to
+examples/ex36_mesh. A local .gitignore addition of `.cache` and
+`compile_commands.json` is not required to build the example and is not in the patch.
+
+The copied example sources keep the MFEM example-36 header comment that was
+present in the local example. They do not replace the MFEM BSD-3-Clause license.
+
+Configure the example with FILE_IO_SOURCE_DIR set to the libs/file_io directory
+of this repository. libs/ex36_mesh/cmake/find_file_io.cmake adds that directory
+with add_subdirectory. It does not fetch file_io from a private remote.
+
+MMG
+---
+Upstream: https://github.com/MmgTools/mmg
+Tag used by libs/mesh_adapter/cmake/find_mmg.cmake: v5.8.0
+License: GNU Lesser General Public License, version 3 or any later version,
+as stated in the upstream LICENSE file ("GNU Lesser General Public License").
+This repository does not vendor MMG sources. The author MIT license does not
+cover MMG.
+
+DiffusionNet
+------------
+metric_learning/model/diffusion_net/ contains four files copied from the
+training code: __init__.py, layers.py, geometry.py, and utils.py.
+Those copies do not carry an upstream license header.
+Upstream project: https://github.com/nmwsharp/diffusion-net
+This NOTICE does not relicense those files and does not attribute them solely
+to the paper authors.
+
+Other copied headers
+--------------------
+metric_learning/dataloader/collate_fn.py keeps its original header naming
+Xiaoyang Wu.
+libs/mesh_adapter/cmake/FindSCOTCH.cmake keeps its Inria / University of
+Tennessee copyright header.
+libs/file_io and libs/metric_utils are author libraries copied into this
+repository so the executables link with add_subdirectory. They are covered by
+LICENSE. Their Eigen and CLI11 fetch scripts point at the public upstream
+repositories named in those scripts.

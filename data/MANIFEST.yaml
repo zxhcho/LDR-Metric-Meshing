@@ -1,0 +1,73 @@
+# dataset_member directory sha256: sort regular files by relative POSIX path,
+# sha256 each file to lowercase hex, concatenate those hex strings with no
+# separator, then sha256 the ASCII concatenation.
+# release.md5 is the MD5 of the archive file obstacle-40k_obs-predict.tar.
+release:
+  archive: obstacle-40k_obs-predict.tar
+  url: https://drive.google.com/file/d/1Ze4hCkDV_HizTEzq86KrjfRZ_1xwe0E2/view?usp=drive_link
+  bytes: 1612779520
+  md5: cca74919983b639589c38629c19cf57e
+checkpoint:
+  role: paper-checkpoint
+  relative_path: checkpoint/model_100.pth
+  bytes: 4906601
+  sha256: cdebd292fb7a9fa394a486a8ff93eabe8d9db742d5db1ca07c351dac972783ff
+  n_block: 8
+  c_width: 128
+dataset_member:
+  - relative_path: 'mesh/plane_44k.obj'
+    kind: mesh
+    bytes: 3501834
+    sha256: 93db7ca904212749de8e9a250656c0e80a85652929b550be4461c77ea09e6a4f
+  - relative_path: 'log/ours_amr.yaml'
+    kind: log
+    bytes: 43997
+    sha256: c0a9c5c9010444ec6faed6d8f50f829122d7d0d9a988b7f97c8cc173ece47f71
+  - relative_path: 'log/ours.yaml'
+    kind: log
+    bytes: 92526
+    sha256: 7483ae889cd69fb7e477f4f20892d799666d94e28bac2e2ce403dc0ec2b7ca21
+  - relative_path: 'log/obs_amr.yaml'
+    kind: log
+    bytes: 65173
+    sha256: 33ca128acfbd83c0a6a86ab975346fc1645fb7977062c3080995c1bea8a870b0
+  - relative_path: 'log/obs.yaml'
+    kind: log
+    bytes: 117126
+    sha256: b9c3b3c2d146509923433a104e2f611c8b04e2a71a809cc65bfd6257d3d6a4ce
+  - relative_path: 'log/uni4k_amr.yaml'
+    kind: log
+    bytes: 80071
+    sha256: b5194e7b65612ed36a50f622ca2ae2e69174b5a5e5eec6c64fc398a1b41071a5
+  - relative_path: 'log/uni4k.yaml'
+    kind: log
+    bytes: 121778
+    sha256: 58d5c8eb70e6755f2274eaeba0e922227c117ca096d390d5bfecef98b041b9cc
+  - relative_path: 'log/uni12k.yaml'
+    kind: log
+    bytes: 102773
+    sha256: 4afa3c788d722f63470312a77faabfcbde769b6fdcf25a06f21e7e8b97262460
+  - relative_path: 'infer/samples'
+    kind: infer_input
+    bytes: 176096275
+    sha256: 3e5aafca79902ea0ee1ef1b598230b9f4b5c270af7b462cad74d882b37ddc108
+  - relative_path: 'infer/op_cache'
+    kind: infer_input
+    bytes: 27477435
+    sha256: cecb58b571b64d588eb50fa69ff4248c7fb70aa63e9d92acf7d69c23f77d96a8
+  - relative_path: 'reference/edge'
+    kind: reference_vtk
+    bytes: 516313391
+    sha256: 14885d999edb12918a6915fd0bc54ac359654aad5e7c842665dd0775aeff6d56
+  - relative_path: 'field/obstacle'
+    kind: solver_input
+    bytes: 470490527
+    sha256: 31b3630b4a88d41dc75594b8cf47312fdaf5b07b5263862fe346477da4e1f8e9
+  - relative_path: 'field/init'
+    kind: solver_input
+    bytes: 46451407
+    sha256: 217e14619231ad3726f09c3270c679b7459d618cb9a8a258683333174d5cb233
+  - relative_path: 'field/gt'
+    kind: solver_input
+    bytes: 365990179
+    sha256: b045136fe48c28b8eefa9bc046191777aa51b48eee13de1d750b0913979d63f8

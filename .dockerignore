@@ -1,0 +1,11 @@
+.git
+build
+openspec
+.cursor
+libs
+dataset_construction
+metric_validation
+data
+**/*.pth
+**/__pycache__
+**/*.pyc
